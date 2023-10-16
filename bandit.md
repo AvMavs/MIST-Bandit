@@ -165,3 +165,48 @@ Ran `ls`. It only showed `data.txt` in the directory. Ran `cat data.txt` and got
 I ran `cat data.txt | grep millionth` and got just that line as the output. `millionth TESKZC0XvTetK0S9xNwm25STk5iWrBvP`.
 
 Password: `TESKZC0XvTetK0S9xNwm25STk5iWrBvP`
+
+#### Level 8 → Level 9
+Logged in with the username `bandit8` and the aforementioned password.
+
+Ran `ls`. Again, just `data.txt`. The problem statement says that the password is in "the only line of text that occurs only once". So, a _unique_ line.
+
+Leafing through the required documentation, I decided to use `sort` to sort the lines alphabetically (thus bringing the duplicates next to each other" and `uniq` to find the unique one.
+
+Running `sort data.txt | uniq -u` gave me the required password.
+
+Password: `EN632PlfYiZbn3PhVK3XOGSlNInNE00t`
+
+#### Level 9 → Level 10
+Logged in with the username `bandit9` and the aforementioned password.
+
+Ran `ls`. Just `data.txt` again. (We're almost friends now). Anyways, the clue said that the password was in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+That means that the file contains non-human readable data (binary) as well, and I just need the `strings` starting with `=`, which I can find the `grep`.
+
+So, the command was `cat data.txt | strings | grep ^=`. 
+
+The output was
+```yaml
+=2""L(
+========== passwordk^
+========== is
+=Y!m
+========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+=r=_
+=uea
+```
+which gave me the required password.
+
+Password: `G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s`
+
+#### Level 10 → Level 11
+Logged in with the username `bandit10` and the aforementioned password.
+
+Ran `ls`. Got `data.txt` again. The clue says that it contains base64 encoded data, which I could decode using `cat data.txt | base64 --decode`.
+
+The output was `The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM`.
+
+Password: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+
+#### Level 11 → Level 12
