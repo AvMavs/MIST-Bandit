@@ -57,7 +57,7 @@ Logged in with the username `bandit6` and the aforementioned password.
 
 Ran `ls`. Got absolutely nothing.  So, they really did mean that the file is stored "somewhere on the server". The given conditions said that the file was **owned by user bandit7, owned by group bandit6, and 33 bytes in size**.
 
-Using the `find` command like before after referring to the documentation, I entered `find / -user bandit7 -group bandit6 -size 33c`. I used `/` since it looks everywhere across the `root` directory.
+Using the `find` command like before after referring to the documentation, I entered `find / -user bandit7 -group bandit6 -size 33c`. I used `/` since it looks everywhere across the `root` directory, `-user bandit7` because that is the user who owns it, `-group bandit6` because that is the user who owns it (personally, I feel numbers > names, but hey, I'm lazy00), and `-size 1033c` indicates the size.
 
 ```yaml
 find: ‘/etc/ssl/private’: Permission denied
