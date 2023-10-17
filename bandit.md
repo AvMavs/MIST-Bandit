@@ -207,6 +207,6 @@ Ran `ls`. Got `data.txt` again. The clue says that it contains base64 encoded da
 
 The output was `The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM`.
 
-Password: 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+Password: `6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM`
 
 #### Level 11 → Level 12
