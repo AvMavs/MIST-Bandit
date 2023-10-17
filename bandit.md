@@ -116,3 +116,19 @@ The output was `The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM`.
 Password: `6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM`
 
 #### Level 11 → Level 12
+Logged in with the username `bandit11` and the aforementioned password.
+
+Ran `ls`. Got `data.txt` again. Running `cat data.txt` gave me `Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi`. The problem statement mentioned that `all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions`, i.e., they've been encoded using the ROT-13 algorithm, something I had fun learning about during my first CTF.
+
+I read up documentation on the `tr` (translate) command and used it to write a command that would apply a ROT-13 decode, with the command being `cat data.txt | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'`. 
+
+Here `[A-Za-z]` indicates the first set, which includes all the uppercase and lowercase alphabet. `[N-ZA-Mn-za-m]` indicates the second set, which indicates that anything from N-Z maps to a corresponding letter from A-M (and the same happens for lowercase letters.
+
+The decoded output was `The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv`.
+
+Password: `JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv`
+
+#### Level 12 → Level 13
+Logged in with the username `bandit12` and the aforementioned password.
+
+Ran `ls.` Got a hex dump.
