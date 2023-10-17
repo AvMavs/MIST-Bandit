@@ -153,6 +153,8 @@ find: ‘/run/systemd/inaccessible/dir’: Permission denied
 find: ‘/run/lock/lvm’: Permission denied
 ```
 
+That's a lot of errors, so I wanted to get rid of them.
+
 The relevant line for me was `/var/lib/dpkg/info/bandit7.password` and I got the password using `cat /var/lib/dpkg/info/bandit7.password`.
 
 Password: `z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S`
