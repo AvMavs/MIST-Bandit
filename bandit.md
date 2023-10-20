@@ -131,4 +131,44 @@ Password: `JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv`
 #### Level 12 → Level 13
 Logged in with the username `bandit12` and the aforementioned password.
 
-Ran `ls.` Got a hex dump.
+Ran `ls.` Got a hex dump. The guide recommended making a folder in `/tmp`, which I did, using `mkdir /tmp/sherlock`, and tried to move `data.txt` to the folder using `mv data.txt /tmp/sherlock`, and I realised that I couldn't move it, just _copy_ it, so I ended up using `cp data.txt /tmp/sherlock`. I then `cd`'d into it using `cd /tmp/sherlock`.
+
+Using `xxd`'s inbuilt decoder, I tried `xxd -r data.txt`, and got a weird file, which according to the problem statement, is a file that is compressed multiple times.
+
+```
+h44�z��A����@=�h4hh��4�i��1������hd��������9���1����������;,�
+�����2�3d*58�~  �S�ZP^��luY��Br$�FP!%�s��h�?�)[=�h��O(B��2A���)�tZc��:�pã)�A�ˈ�0���΅A�yjeϢx,�(����z�E�+"�2�/�-��e"���^����t�j���$�d�@�dJơ'7\���$��m1c��#>�aԽ�EV��F��OCӐc@M�C���]��Y2^h8���D=��~  O�I��NDpF�+�|b#Jv�#�J��d�LފW$�Û�͖y�`
+                                                           �\&  ��[�@*w�M�0θ��nr��C��`e$b�
+     ~�{���
+           ��`�<����a��?e:T���e�T4±b����)
+                                         �@ِ���x=
+```
+
+I had to look up how to save this to a file, which I then did with `xxd -r data.txt > target`. Then, I used the `file` command (as suggested by the problem page) to get the details of the file.
+
+It told me that the file was `gzip compressed data, was "data2.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 573`.
+
+I decided to change the extension using the mv command, `mv target target.gz`. Then, I decoded it with `gunzip target.gz` (after looking up how I can decode gzip files using the CLI. Using `ls`, I saw that another `target` file replaced the previous.
+
+Then, I tried to view it, getting another weirdly encoded file. Running `file target` again. It said that the file was a `target: bzip2 compressed data, block size = 900k`.
+
+Now, since this was a recurring set of events, I'm just going to list commands and results from now on.
+
+Ran `mv target target.bz2`. Then, ran `bzip2 -d target.bz2`. Ran `ls` -> Saw `target` -> `cat target` -> Weirdly encoded file -> `file target` -> `target: gzip compressed data, was "data4.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 20480`
+
+Ran `mv target target.gz`. Then, ran `gunzip target.gz`. Ran `ls` -> Saw `target` -> `cat target` -> Weirdly encoded file -> `file target` -> `target: POSIX tar archive (GNU)`.
+
+Ran `mv target target.tar`. Then, ran `tar -xf target.tar`. Ran `ls` -> Saw `data5.bin` -> `cat data5.bin` -> Weirdly encoded file -> `file data5.bin` -> `target: POSIX tar archive (GNU)`.
+
+Ran `mv data5.bin data5.tar`. Then, ran `tar -xf data5.tar`. Ran `ls` -> Saw `data6.bin` -> `cat data6.bin` -> Weirdly encoded file -> `file data6.bin` -> `data6.bin: bzip2 compressed data, block size = 900k`.
+
+Ran `mv data6.bin data6.bz2`. Then, ran `bzip2 -d data6.bz2`. Ran `ls` -> Saw `data6` -> `file data6` -> `target: POSIX tar archive (GNU)`.
+
+Ran `mv data6 data6.tar`. Then, ran `tar -xf data6.tar`. Ran `ls` -> Saw `data8.bin` -> `file data8.bin` -> `data8.bin: gzip compressed data, was "data9.bin"`.
+
+Ran `mv data8.bin data8.gz`. Then, ran `gunzip data8.gz`. Ran `ls` -> Saw `data8` -> `file data8` -> `data8: ASCII text`.
+
+Now that we finally reached ASCII text, I ran `cat data8` to get `The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw`.
+
+Password: `wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw`
+
