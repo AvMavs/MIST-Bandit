@@ -7,7 +7,9 @@ Well, yes, one _should_ in theory prefer a linux terminal for this. But the conv
 
 
 #### Level 0 → Level 1
-I used the command `ls` to list the files in the default home directory that we log in to. It only shows one file, a `readme`. I thought it was a folder and tried `cd`-ing into it, but... _yeah._ Then I went for ```nano readme``` (I know, I know, the guide says cat, but I've used nano a LOT) and got the password for the next stage.
+I used the command `ls` to list the files in the default home directory that we log in to. It only shows one file, a `readme`. I thought it was a folder and tried `cd`-ing into it, but... _yeah._ Then I went for 
+```nano readme```
+ (I know, I know, the guide says cat, but I've used nano a LOT) and got the password for the next stage.
 
 Password: `NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL`
 
