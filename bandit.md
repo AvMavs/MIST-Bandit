@@ -208,4 +208,6 @@ kAWpXbv5tbkkzbS0eaLPTKgLzavXtQoTtKwrjpolHKIHUz6Wu+n4abfAIRFubOdN
 -----END RSA PRIVATE KEY-----
 ```
 
+Now, since SSH clients are frowned upon, I used `ssh -i sshkey.private bandit14@localhost` since it's on the same host anyhow.
+
 #### Level 14 → Level 15
