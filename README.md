@@ -1,1 +1,1 @@
-# Cryptonite-Bandit
+# MIST-Bandit
